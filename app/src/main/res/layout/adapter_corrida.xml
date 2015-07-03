@@ -17,12 +17,24 @@
         <TextView
             android:id="@+id/data"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="6dip"
+            android:text="26"
             android:contentDescription="TODO"
-            android:textSize="40sp"/>
+            android:textSize="30sp"/>
+
+        <TextView
+            android:id="@+id/mes"
+            android:layout_width="wrap_content"
+            android:layout_height="24dip"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:text="AGO"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/secondLine"

@@ -1,0 +1,146 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:text="@string/title"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tx_corrida"
+        android:id="@+id/lbCorrida"
+        android:layout_marginLeft="10sp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txCorrida"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tx_data"
+            android:id="@+id/lbData"
+            android:layout_marginLeft="10sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txData"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tx_cidade"
+            android:id="@+id/lbCidade"
+            android:layout_marginLeft="10sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txCidade"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tx_estado"
+            android:id="@+id/lbEstado"
+            android:layout_marginLeft="10sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txEstado"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tx_valor"
+            android:id="@+id/lbValor"
+            android:layout_marginLeft="10sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txValor"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tx_status"
+            android:id="@+id/lbStatus"
+            android:layout_marginLeft="10sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txStatus"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+
+    <fragment android:id="@+id/fragment_weather"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        class="br.g4.senairunner.senairunner.activity.WeatherActivityFragment"
+        tools:layout="@layout/fragment_main" />
+
+</LinearLayout>

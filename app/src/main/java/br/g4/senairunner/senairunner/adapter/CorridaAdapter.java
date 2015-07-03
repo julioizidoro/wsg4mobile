@@ -46,10 +46,11 @@ public class CorridaAdapter extends RecyclerView.Adapter<CorridaAdapter.Corridas
     @Override
     public void onBindViewHolder(final CorridasViewHolder holder, final int position){
         Corrida c = corridas.get(position);
-        holder.data.setText(new SimpleDateFormat("dd/MM/yyyy").format(c.getDataCorrida()));
+        holder.data.setText(new SimpleDateFormat("dd").format(c.getDataCorrida()));
+        holder.mes.setText(new SimpleDateFormat("MMM").format(c.getDataCorrida()));
         holder.firstLine.setText(c.getNomeCorrida());
         holder.secondLine.setText(c.getCidade() + "/" + c.getEstado());
-        holder.progress.setVisibility(View.VISIBLE);
+        //holder.progress.setVisibility(View.VISIBLE);
 
         if (corridaOnClickListener != null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -69,12 +70,14 @@ public class CorridaAdapter extends RecyclerView.Adapter<CorridaAdapter.Corridas
         public TextView firstLine;
         public TextView secondLine;
         public TextView data;
-        ProgressBar progress;
+        public TextView mes;
+        //ProgressBar progress;
         CardView cardView;
 
         public CorridasViewHolder(View view){
             super(view);
             data = (TextView) view.findViewById(R.id.data);
+            mes = (TextView) view.findViewById(R.id.mes);
             firstLine = (TextView) view.findViewById(R.id.firstLine);
             secondLine = (TextView) view.findViewById(R.id.secondLine);
             cardView = (CardView) view.findViewById(R.id.card_view);

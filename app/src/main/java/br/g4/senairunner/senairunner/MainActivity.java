@@ -15,11 +15,11 @@ public class MainActivity extends FragmentActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
         if(savedInstanceState == null) {
-            android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
             Fragment fragment = new Fragment();
-            ft.add(R.id.fragment, fragment, "FragmentoCorridas");
+            ft.add(R.id.fragment_main, fragment, "FragmentoCorridas");
             ft.commit();
         }
     }
