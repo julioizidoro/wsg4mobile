@@ -39,12 +39,11 @@ public class CorridaService {
 
     public static List<Corrida> getCorridas(String numero) throws JSONException, IOException {
 
-        String json="{'inscricao':[{'corredor':'1','corrida':'2','statusPag':'1'},{'corredor':'1','corrida':'3','statusPag':'1'},{'corredor':'1','corrida':'5','statusPag':'1'}]}";
-        // = "{'corridas':[{'idcorrida':'15','nome':'Travessia Torres-TramandaI','descricao':'Travessia Torres-TramandaI','data':'2015-01-31','cidade':'TORRES','estado':'RS','valorinscricao':'45','status':'Confirmada'},{'idcorrida':'16','nome':'Night Run CostAo do Santinho','descricao':'Night Run CostAo do Santinho','data':'2015-01-31','cidade':'FLORIANOPOLIS','estado':'SC','valorinscricao':'48','status':'Confirmada'},{'idcorrida':'17','nome':'Eclipse Run','descricao':'Eclipse Run','data':'2015-01-31','cidade':'RECIFE','estado':'PE','valorinscricao':'51','status':'Confirmada'}]}";
 
         final List<Corrida> corridas = new ArrayList<Corrida>();
 
-        json = buscarJSon(BASE_URL + numero + "/runs");
+        String json = buscarJSon(BASE_URL + numero + "/runs");
+        json = "{'inscricao':" + json + "}";
         JSONObject jsonObject = new JSONObject(json);
         JSONArray jsonArray = jsonObject.getJSONArray("inscricao");
         for (int i = 0; i < jsonArray.length() ; i++) {
