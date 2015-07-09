@@ -20,7 +20,7 @@ public class WeatherHttpClient {
         InputStream is = null;
 
         try {
-            con = (HttpURLConnection) ( new URL(BASE_URL + location)).openConnection();
+            con = (HttpURLConnection) ( new URL(BASE_URL + location + "&units=metric&lang=pt")).openConnection();
             con.setRequestMethod("GET");
             con.setDoInput(true);
             con.setDoOutput(true);

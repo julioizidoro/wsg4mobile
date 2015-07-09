@@ -75,7 +75,8 @@ public class MainActivityFragment extends android.support.v4.app.Fragment {
         @Override
         protected List<Corrida> doInBackground(Void... params){
             try{
-                return CorridaService.getCorridas();
+                MainActivity mainActivity = (MainActivity) getActivity();
+                return CorridaService.getCorridas(mainActivity.numero);
             }catch (Exception e){
                 Log.e("MainFragment", e.getMessage(), e);
                 return null;

@@ -10,4 +10,5 @@
     <string name="tx_estado">"Estado :"</string>
     <string name="tx_valor">"Valor da Inscrição :"</string>
     <string name="tx_status">"Status :"</string>
+    <string name="title_activity_principal">Senai Runner G4</string>
 </resources>

@@ -11,11 +11,14 @@ import android.view.MenuItem;
 
 public class MainActivity extends FragmentActivity{
 
+    public String numero;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+        numero = this.getIntent().getStringExtra("numero");
         if(savedInstanceState == null) {
             FragmentTransaction ft = fm.beginTransaction();
             Fragment fragment = new Fragment();
