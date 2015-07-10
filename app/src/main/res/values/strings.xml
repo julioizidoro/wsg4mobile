@@ -11,4 +11,8 @@
     <string name="tx_valor">"Valor da Inscrição :"</string>
     <string name="tx_status">"Status :"</string>
     <string name="title_activity_principal">Senai Runner G4</string>
+
+    <string name="humidity">Humidade</string>
+    <string name="pressure">Pressão</string>
+    <string name="wind">Vento</string>
 </resources>

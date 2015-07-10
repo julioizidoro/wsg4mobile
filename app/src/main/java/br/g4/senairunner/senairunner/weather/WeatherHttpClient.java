@@ -53,8 +53,9 @@ public class WeatherHttpClient {
     public byte[] getImage(String code) {
         HttpURLConnection con = null ;
         InputStream is = null;
+        byte[] image = null;
         try {
-            con = (HttpURLConnection) ( new URL(IMG_URL + code)).openConnection();
+            con = (HttpURLConnection) ( new URL(IMG_URL + code + ".png")).openConnection();
             con.setRequestMethod("GET");
             con.setDoInput(true);
             con.setDoOutput(true);
@@ -68,7 +69,8 @@ public class WeatherHttpClient {
             while ( is.read(buffer) != -1)
                 baos.write(buffer);
 
-            return baos.toByteArray();
+            image = baos.toByteArray();
+            return image;
         }
         catch(Throwable t) {
             t.printStackTrace();
@@ -77,8 +79,6 @@ public class WeatherHttpClient {
             try { is.close(); } catch(Throwable t) {}
             try { con.disconnect(); } catch(Throwable t) {}
         }
-
-        return null;
-
+        return image;
     }
 }

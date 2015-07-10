@@ -60,7 +60,7 @@ public class WeatherActivityFragment extends android.support.v4.app.Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
         Intent i = getActivity().getIntent();
-        Corrida corrida = (Corrida) i.getSerializableExtra("corrida");
+        corrida = (Corrida) i.getSerializableExtra("corrida");
         JSONWeatherTask task = new JSONWeatherTask();
         task.execute(new String[]{corrida.getCidade() + "/" + corrida.getEstado()});
     }
@@ -70,18 +70,13 @@ public class WeatherActivityFragment extends android.support.v4.app.Fragment {
         protected Weather doInBackground(String... params) {
             Weather weather = new Weather();
             String data = ( (new WeatherHttpClient()).getWeatherData(params[0]));
-
             try {
                 weather = JSONWeatherParser.getWeather(data);
-
-                // Let's retrieve the icon
                 weather.iconData = ( (new WeatherHttpClient()).getImage(weather.currentCondition.getIcon()));
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             return weather;
-
         }
 
         @Override
@@ -93,13 +88,13 @@ public class WeatherActivityFragment extends android.support.v4.app.Fragment {
                 imgView.setImageBitmap(img);
             }
 
-            cityText.setText(weather.location.getCity() + "," + weather.location.getCountry());
-            condDescr.setText(weather.currentCondition.getCondition() + "(" + weather.currentCondition.getDescr() + ")");
-            temp.setText("" + Math.round((weather.temperature.getTemp() - 273.15)) + "?C");
+            cityText.setText(weather.location.getCity() + ", " + weather.location.getCountry());
+            condDescr.setText("Condição do tempo: " + "(" + weather.currentCondition.getDescr() + ")");
+            temp.setText("" + Math.round(weather.temperature.getTemp()) + "ºC");
             hum.setText("" + weather.currentCondition.getHumidity() + "%");
             press.setText("" + weather.currentCondition.getPressure() + " hPa");
-            windSpeed.setText("" + weather.wind.getSpeed() + " mps");
-            windDeg.setText("" + weather.wind.getDeg() + "?");
+            windSpeed.setText("" + weather.wind.getSpeed() + " m/s");
+            windDeg.setText("" + weather.wind.getDeg() + "º");
         }
 
     }

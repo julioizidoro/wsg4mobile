@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/condDescr"
-        android:text="Pressure"
+        android:text="@string/pressure"
         android:layout_marginTop="15dp" />
 
     <TextView
@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/pressLab"
-        android:text="Humidity" />
+        android:text="@string/humidity" />
 
     <TextView
         android:id="@+id/hum"
@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/humLab"
-        android:text="Wind" />
+        android:text="@string/wind" />
 
     <TextView
         android:id="@+id/windSpeed"
