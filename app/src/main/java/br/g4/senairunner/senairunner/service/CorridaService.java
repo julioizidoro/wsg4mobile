@@ -32,8 +32,8 @@ public class CorridaService {
 
     private static final boolean LOG_ON = false;
     private static final String TAG = "CorridaService";
-    private static final String BASE_URL = "http://107.191.109.96/SenaiRunner/runners/";
-    private static final String BASE_ULR_CORRIDA =  "http://107.191.109.96/SenaiRunner/runs/";
+    private static final String BASE_URL = "http://www.ceolato.com.br/wsg4server/corredores/";
+    private static final String BASE_ULR_CORRIDA =  "http://www.ceolato.com.br/wsg4server/corridas/";
 
 
 
@@ -42,10 +42,10 @@ public class CorridaService {
 
         final List<Corrida> corridas = new ArrayList<Corrida>();
 
-        String json = buscarJSon(BASE_URL + numero + "/runs");
-        json = "{'inscricao':" + json + "}";
+        String json = buscarJSon(BASE_URL + numero + "/corridas");
+        //json = "{'inscricao':" + json + "}";
         JSONObject jsonObject = new JSONObject(json);
-        JSONArray jsonArray = jsonObject.getJSONArray("inscricao");
+        JSONArray jsonArray = jsonObject.getJSONArray("corridas");
         for (int i = 0; i < jsonArray.length() ; i++) {
             JSONObject jsonInscricao= jsonArray.getJSONObject(i);
             corridas.add(parserJSONInscricao(jsonInscricao));
@@ -69,7 +69,7 @@ public class CorridaService {
     }
 
     private static Corrida parserJSONInscricao(JSONObject jsonInscricao) throws IOException, JSONException {
-        String id_corrida = jsonInscricao.optString("corrida");
+        String id_corrida = jsonInscricao.optString("idcorrida");
         String  jsonRetorno= buscarJSon(BASE_ULR_CORRIDA + id_corrida);
         JSONObject jsonCorrida= new JSONObject(jsonRetorno);
         Corrida c = new Corrida();
@@ -84,8 +84,8 @@ public class CorridaService {
         int dia = Integer.parseInt(data.substring(8,10));
         d.set(ano, mes, dia);
         c.setDataCorrida(d.getTime());
-        c.setIdCorrida(jsonCorrida.optLong("id"));
-        c.setValorInscricao(jsonCorrida.optDouble("vlrInscricao"));
+        c.setIdCorrida(jsonCorrida.optLong("idcorrida"));
+        c.setValorInscricao(jsonCorrida.optDouble("valorinscricao"));
         c.setStatusCorrida(jsonCorrida.optString("status"));
         return c;
     }
