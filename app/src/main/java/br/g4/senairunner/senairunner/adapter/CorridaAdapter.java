@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -15,9 +14,6 @@ import java.text.SimpleDateFormat;
 import br.g4.senairunner.senairunner.R;
 import br.g4.senairunner.senairunner.dominio.Corrida;
 
-/**
- * Created by 1541714 on 30/06/2015.
- */
 public class CorridaAdapter extends RecyclerView.Adapter<CorridaAdapter.CorridasViewHolder> {
 
     protected static final String TAG = "senairunner";
@@ -39,8 +35,7 @@ public class CorridaAdapter extends RecyclerView.Adapter<CorridaAdapter.Corridas
     @Override
     public CorridasViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType){
         View view = LayoutInflater.from(context).inflate(R.layout.adapter_corrida, viewGroup, false);
-        CorridasViewHolder holder = new CorridasViewHolder(view);
-        return holder;
+        return new CorridasViewHolder(view);
     }
 
     @Override
@@ -50,7 +45,6 @@ public class CorridaAdapter extends RecyclerView.Adapter<CorridaAdapter.Corridas
         holder.mes.setText(new SimpleDateFormat("MMM").format(c.getDataCorrida()));
         holder.firstLine.setText(c.getNomeCorrida());
         holder.secondLine.setText(c.getCidade() + "/" + c.getEstado());
-        //holder.progress.setVisibility(View.VISIBLE);
 
         if (corridaOnClickListener != null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +65,6 @@ public class CorridaAdapter extends RecyclerView.Adapter<CorridaAdapter.Corridas
         public TextView secondLine;
         public TextView data;
         public TextView mes;
-        //ProgressBar progress;
         CardView cardView;
 
         public CorridasViewHolder(View view){

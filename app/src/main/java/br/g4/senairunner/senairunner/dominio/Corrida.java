@@ -3,9 +3,6 @@ package br.g4.senairunner.senairunner.dominio;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by 1541714 on 30/06/2015.
- */
 public class Corrida implements Serializable {
 
     private Long idCorrida;

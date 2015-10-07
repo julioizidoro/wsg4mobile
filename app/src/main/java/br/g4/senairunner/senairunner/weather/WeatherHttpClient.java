@@ -7,13 +7,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by CarlosAlberto on 02/07/2015.
- */
 public class WeatherHttpClient {
     private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
     private static String IMG_URL = "http://openweathermap.org/img/w/";
-
 
     public String getWeatherData(String location) {
         HttpURLConnection con = null ;
@@ -26,13 +22,14 @@ public class WeatherHttpClient {
             con.setDoOutput(true);
             con.connect();
 
-            // Let's read the response
             StringBuffer buffer = new StringBuffer();
             is = con.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            String line = null;
-            while (  (line = br.readLine()) != null )
-                buffer.append(line + "\r\n");
+            String line;
+            while ((line = br.readLine()) != null ) {
+                buffer.append(line);
+                buffer.append("\r\n");
+            }
 
             is.close();
             con.disconnect();
@@ -45,9 +42,7 @@ public class WeatherHttpClient {
             try { is.close(); } catch(Throwable t) {}
             try { con.disconnect(); } catch(Throwable t) {}
         }
-
         return null;
-
     }
 
     public byte[] getImage(String code) {
@@ -61,7 +56,6 @@ public class WeatherHttpClient {
             con.setDoOutput(true);
             con.connect();
 
-            // Let's read the response
             is = con.getInputStream();
             byte[] buffer = new byte[1024];
             ByteArrayOutputStream baos = new ByteArrayOutputStream();

@@ -3,7 +3,6 @@ package br.g4.senairunner.senairunner;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,23 +13,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.List;
 
 import br.g4.senairunner.senairunner.activity.CorridaActivity;
-import br.g4.senairunner.senairunner.activity.WeatherActivityFragment;
 import br.g4.senairunner.senairunner.adapter.CorridaAdapter;
 import br.g4.senairunner.senairunner.dominio.Corrida;
 import br.g4.senairunner.senairunner.service.CorridaService;
 
-/**
- * A placeholder fragment containing a simple view.
- */
 public class MainActivityFragment extends android.support.v4.app.Fragment {
 
     protected RecyclerView recyclerView;
     private List<Corrida> corridas;
-    private LinearLayoutManager mLayoutManager;
 
     public MainActivityFragment() {
     }
@@ -39,11 +32,13 @@ public class MainActivityFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
+
         return view;
     }
 
@@ -71,12 +66,11 @@ public class MainActivityFragment extends android.support.v4.app.Fragment {
     }
 
     private class GetCorridasTask extends AsyncTask<Void, Void, List<Corrida>>{
-
         @Override
         protected List<Corrida> doInBackground(Void... params){
             try{
                 MainActivity mainActivity = (MainActivity) getActivity();
-                return CorridaService.getCorridas(mainActivity.numero);
+                return CorridaService.getCorridas(mainActivity.getNumero());
             }catch (Exception e){
                 Log.e("MainFragment", e.getMessage(), e);
                 return null;

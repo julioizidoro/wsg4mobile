@@ -3,9 +3,6 @@ package br.g4.senairunner.senairunner.dominio;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by 1541714 on 30/06/2015.
- */
 public class Corredor implements Serializable {
 
     private Long idCorredor;
@@ -54,14 +51,14 @@ public class Corredor implements Serializable {
         this.estado = estado;
     }
 
-    public String getStatusCorredot() {
-        return statusCorredot;
+    public String getStatusCorredor() {
+        return statusCorredor;
     }
 
-    public void setStatusCorredot(String statusCorredot) {
-        this.statusCorredot = statusCorredot;
+    public void setStatusCorredor(String statusCorredor) {
+        this.statusCorredor = statusCorredor;
     }
 
-    private String statusCorredot;
+    private String statusCorredor;
 
 }

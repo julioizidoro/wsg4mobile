@@ -3,22 +3,24 @@ package br.g4.senairunner.senairunner;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
 
 public class MainActivity extends FragmentActivity{
 
-    public String numero;
+    private String numero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        numero = getIntent().getStringExtra("numero");
+
+        criaCorridaFragment(savedInstanceState);
+    }
+
+    private void criaCorridaFragment(Bundle savedInstanceState) {
         android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
-        numero = this.getIntent().getStringExtra("numero");
         if(savedInstanceState == null) {
             FragmentTransaction ft = fm.beginTransaction();
             Fragment fragment = new Fragment();
@@ -27,26 +29,7 @@ public class MainActivity extends FragmentActivity{
         }
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public String getNumero() {
+        return numero;
     }
 }

@@ -5,7 +5,6 @@ import org.json.JSONException;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -25,9 +24,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-/**
- * Created by CarlosAlberto on 02/07/2015.
- */
 public class WeatherActivityFragment extends android.support.v4.app.Fragment {
 
     private TextView cityText;
@@ -44,6 +40,7 @@ public class WeatherActivityFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_weather, container, false);
+
         cityText = (TextView) view.findViewById(R.id.cityText);
         condDescr = (TextView) view.findViewById(R.id.condDescr);
         temp = (TextView) view.findViewById(R.id.temp);
@@ -59,8 +56,10 @@ public class WeatherActivityFragment extends android.support.v4.app.Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
+
         Intent i = getActivity().getIntent();
         corrida = (Corrida) i.getSerializableExtra("corrida");
+
         JSONWeatherTask task = new JSONWeatherTask();
         task.execute(new String[]{corrida.getCidade() + "/" + corrida.getEstado()});
     }
@@ -96,6 +95,5 @@ public class WeatherActivityFragment extends android.support.v4.app.Fragment {
             windSpeed.setText("" + weather.wind.getSpeed() + " m/s");
             windDeg.setText("" + weather.wind.getDeg() + "º");
         }
-
     }
 }

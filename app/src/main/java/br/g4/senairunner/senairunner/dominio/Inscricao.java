@@ -2,9 +2,6 @@ package br.g4.senairunner.senairunner.dominio;
 
 import java.io.Serializable;
 
-/**
- * Created by 1541714 on 30/06/2015.
- */
 public class Inscricao implements Serializable{
 
     private Long idInscricao;
