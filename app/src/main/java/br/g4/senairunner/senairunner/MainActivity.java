@@ -8,8 +8,6 @@ import android.support.v7.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String numero;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,8 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-
-        numero = getIntent().getStringExtra("numero");
 
         criaCorridaFragment(savedInstanceState);
     }
@@ -31,9 +27,5 @@ public class MainActivity extends AppCompatActivity {
             ft.add(R.id.fragment_main, fragment, "FragmentoCorridas");
             ft.commit();
         }
-    }
-
-    public String getNumero() {
-        return numero;
     }
 }

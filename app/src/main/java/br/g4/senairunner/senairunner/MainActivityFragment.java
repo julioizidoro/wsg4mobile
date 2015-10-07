@@ -1,7 +1,9 @@
 package br.g4.senairunner.senairunner;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -69,8 +71,8 @@ public class MainActivityFragment extends android.support.v4.app.Fragment {
         @Override
         protected List<Corrida> doInBackground(Void... params){
             try{
-                MainActivity mainActivity = (MainActivity) getActivity();
-                return CorridaService.getCorridas(mainActivity.getNumero());
+                SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+                return CorridaService.getCorridas(settings.getString("numero","0"));
             }catch (Exception e){
                 Log.e("MainFragment", e.getMessage(), e);
                 return null;
