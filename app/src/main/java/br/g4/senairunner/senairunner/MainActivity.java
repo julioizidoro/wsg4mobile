@@ -15,17 +15,5 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-
-        criaCorridaFragment(savedInstanceState);
-    }
-
-    private void criaCorridaFragment(Bundle savedInstanceState) {
-        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
-        if(savedInstanceState == null) {
-            FragmentTransaction ft = fm.beginTransaction();
-            Fragment fragment = new Fragment();
-            ft.add(R.id.fragment_main, fragment, "FragmentoCorridas");
-            ft.commit();
-        }
     }
 }

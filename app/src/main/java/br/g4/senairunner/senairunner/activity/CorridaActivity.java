@@ -22,18 +22,6 @@ public class CorridaActivity extends AppCompatActivity {
 
         Corrida corrida = (Corrida) getIntent().getSerializableExtra("corrida");
         preencheCampos(corrida);
-
-        criaWeatherFragment(savedInstanceState);
-    }
-
-    private void criaWeatherFragment(Bundle savedInstanceState) {
-        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
-        if (savedInstanceState == null) {
-            FragmentTransaction ft = fm.beginTransaction();
-            Fragment fragment = new Fragment();
-            ft.add(R.id.fragment_weather, fragment, "FragmentoWeather");
-            ft.commit();
-        }
     }
 
     private void preencheCampos(Corrida corrida) {
