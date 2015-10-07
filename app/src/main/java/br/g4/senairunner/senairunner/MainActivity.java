@@ -1,11 +1,12 @@
 package br.g4.senairunner.senairunner;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
-public class MainActivity extends FragmentActivity{
+public class MainActivity extends AppCompatActivity {
 
     private String numero;
 
@@ -13,6 +14,9 @@ public class MainActivity extends FragmentActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
 
         numero = getIntent().getStringExtra("numero");
 
