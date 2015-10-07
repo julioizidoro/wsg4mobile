@@ -43,8 +43,8 @@ public class CorridaAdapter extends RecyclerView.Adapter<CorridaAdapter.Corridas
         Corrida c = corridas.get(position);
         holder.data.setText(new SimpleDateFormat("dd").format(c.getDataCorrida()));
         holder.mes.setText(new SimpleDateFormat("MMM").format(c.getDataCorrida()));
-        holder.firstLine.setText(c.getNomeCorrida());
-        holder.secondLine.setText(c.getCidade() + "/" + c.getEstado());
+        holder.firstLine.setText(c.getCidade() + "/" + c.getEstado());
+        holder.secondLine.setText(c.getNomeCorrida());
 
         if (corridaOnClickListener != null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +57,7 @@ public class CorridaAdapter extends RecyclerView.Adapter<CorridaAdapter.Corridas
     }
 
     public interface CorridaOnClickListener{
-        public void onClickCorrida(View view, int idx);
+        void onClickCorrida(View view, int idx);
     }
 
     public static class CorridasViewHolder extends RecyclerView.ViewHolder {
