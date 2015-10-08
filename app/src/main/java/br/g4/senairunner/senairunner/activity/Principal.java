@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.g4.senairunner.senairunner.MainActivity;
@@ -20,7 +22,7 @@ import br.g4.senairunner.senairunner.service.CorridaService;
 
 public class Principal extends AppCompatActivity implements Runnable {
 
-    List<Corrida> corridas;
+    ArrayList<Corrida> corridas;
     String numero;
     TextView texto;
     ProgressDialog progressDlg;
@@ -50,7 +52,7 @@ public class Principal extends AppCompatActivity implements Runnable {
     @Override
     public void run() {
         try {
-            corridas = CorridaService.getCorridas(numero);
+            corridas = (ArrayList<Corrida>)CorridaService.getCorridas(numero);
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -80,6 +82,9 @@ public class Principal extends AppCompatActivity implements Runnable {
         editor.commit();
 
         Intent intent = new Intent(Principal.this, MainActivity.class);
+        Bundle envelope = new Bundle();
+        envelope.putSerializable("corridas", corridas);
+        intent.putExtra("listCorridas",envelope);
         startActivity(intent);
     }
 
