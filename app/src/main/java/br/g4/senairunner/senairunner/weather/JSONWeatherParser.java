@@ -11,6 +11,9 @@ public class JSONWeatherParser {
     public static Weather getWeather(String data) throws JSONException  {
         Weather weather = new Weather();
 
+        if (data == null)
+            return weather;
+
         JSONObject jObj = new JSONObject(data);
 
         Location loc = new Location();

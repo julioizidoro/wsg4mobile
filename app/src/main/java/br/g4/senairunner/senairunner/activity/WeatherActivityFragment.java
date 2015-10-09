@@ -82,6 +82,9 @@ public class WeatherActivityFragment extends android.support.v4.app.Fragment {
         protected void onPostExecute(Weather weather) {
             super.onPostExecute(weather);
 
+            if (weather == null || weather.location == null)
+                return;
+
             if (weather.iconData != null && weather.iconData.length > 0) {
                 Bitmap img = BitmapFactory.decodeByteArray(weather.iconData, 0, weather.iconData.length);
                 imgView.setImageBitmap(img);
