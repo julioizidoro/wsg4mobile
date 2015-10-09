@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
@@ -7,9 +6,19 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-<fragment android:id="@+id/fragment_main"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    class="br.g4.senairunner.senairunner.MainActivityFragment"
-    tools:layout="@layout/fragment_main" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <android.support.v7.widget.RecyclerView android:id="@+id/recyclerView"
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:clipToPadding="false"
+            android:divider="@null" android:dividerHeight="0dp"
+            android:listSelector="@android:color/transparent"
+            android:scrollbarStyle="outsideOverlay" android:scrollbars="vertical" />
+
+    </FrameLayout>
 
 </LinearLayout>

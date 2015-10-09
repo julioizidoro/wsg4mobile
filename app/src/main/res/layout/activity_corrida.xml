@@ -137,6 +137,6 @@
     <fragment android:id="@+id/fragment_weather"
         android:layout_width="match_parent" android:layout_height="match_parent"
         class="br.g4.senairunner.senairunner.activity.WeatherActivityFragment"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/activity_main" />
 
 </LinearLayout>
