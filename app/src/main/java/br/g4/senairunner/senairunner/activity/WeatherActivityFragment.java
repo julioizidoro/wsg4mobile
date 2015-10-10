@@ -102,7 +102,7 @@ public class WeatherActivityFragment extends android.support.v4.app.Fragment {
             }
 
             cityText.setText(weather.location.getCity() + ", " + weather.location.getCountry());
-            condDescr.setText("Condição do tempo: " + "(" + weather.currentCondition.getDescr() + ")");
+            condDescr.setText(weather.currentCondition.getDescr());
             temp.setText("" + Math.round(weather.temperature.getTemp()) + "ºC");
             hum.setText("" + weather.currentCondition.getHumidity() + "%");
             press.setText("" + weather.currentCondition.getPressure() + " hPa");

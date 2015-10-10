@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,6 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context=".MainActivity" >
 
     <TextView
@@ -14,22 +15,31 @@
         style="?android:attr/textAppearanceMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="Cidade, BR"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:background="#24030303">
+    <TableRow>
 
     <ImageView
         android:id="@+id/condIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/cityText" />
+        android:layout_alignParentLeft="true" />
 
     <TextView
         android:id="@+id/condDescr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/condIcon"
-        android:layout_alignLeft="@id/condIcon"
-        />
+        android:layout_toRightOf="@id/condIcon"
+        android:text="condição do tempo" />
 
     <TextView
         android:id="@+id/temp"
@@ -38,14 +48,22 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
         android:layout_alignBaseline="@id/condDescr"
-        android:layout_toRightOf="@id/condDescr"/>
+        android:layout_toRightOf="@id/condDescr"
+        android:text="00 C" />
+
+    </TableRow>
+    </TableLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
     <TextView
         android:id="@+id/pressLab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/condDescr"
         android:text="@string/pressure"
         android:layout_marginTop="15dp" />
 
@@ -55,14 +73,23 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/pressLab"
         android:layout_toRightOf="@id/pressLab"
-        style="@style/valData"/>
+        style="@style/valData"
+        android:text="99"
+        android:layout_marginLeft="5dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
     <TextView
         android:id="@+id/humLab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/pressLab"
         android:text="@string/humidity" />
 
     <TextView
@@ -71,15 +98,23 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/humLab"
         android:layout_toRightOf="@id/humLab"
-        android:layout_marginLeft="4dp"
-        style="@style/valData"/>
+        android:layout_marginLeft="5dp"
+        style="@style/valData"
+        android:text="99" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
     <TextView
         android:id="@+id/windLab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/humLab"
         android:text="@string/wind" />
 
     <TextView
@@ -88,8 +123,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/windLab"
         android:layout_toRightOf="@id/windLab"
-        android:layout_marginLeft="4dp"
-        style="@style/valData" />
+        android:layout_marginLeft="5dp"
+        style="@style/valData"
+        android:text="99" />
 
     <TextView
         android:id="@+id/windDeg"
@@ -98,6 +134,8 @@
         android:layout_alignBaseline="@id/windLab"
         android:layout_toRightOf="@id/windSpeed"
         android:layout_marginLeft="4dp"
-        style="@style/valData"/>
+        style="@style/valData"
+        android:text="99" />
+    </RelativeLayout>
 
-</RelativeLayout>
+</LinearLayout>
