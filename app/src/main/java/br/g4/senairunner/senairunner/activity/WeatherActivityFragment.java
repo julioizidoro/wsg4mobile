@@ -60,18 +60,23 @@ public class WeatherActivityFragment extends android.support.v4.app.Fragment {
         Intent i = getActivity().getIntent();
         corrida = (Corrida) i.getSerializableExtra("corrida");
 
+        String location = corrida.getCidade() + "/" + corrida.getEstado();
+
         JSONWeatherTask task = new JSONWeatherTask();
-        task.execute(new String[]{corrida.getCidade() + "/" + corrida.getEstado()});
+        task.execute(location);
     }
 
     private class JSONWeatherTask extends AsyncTask<String, Void, Weather> {
         @Override
         protected Weather doInBackground(String... params) {
+            String location = params[0];
             Weather weather = new Weather();
-            String data = ( (new WeatherHttpClient()).getWeatherData(params[0]));
+            WeatherHttpClient client = new WeatherHttpClient();
+
+            String data = client.getWeatherData(location);
             try {
                 weather = JSONWeatherParser.getWeather(data);
-                weather.iconData = ( (new WeatherHttpClient()).getImage(weather.currentCondition.getIcon()));
+                weather.iconData = client.getImage(weather.currentCondition.getIcon());
             } catch (JSONException e) {
                 e.printStackTrace();
             }

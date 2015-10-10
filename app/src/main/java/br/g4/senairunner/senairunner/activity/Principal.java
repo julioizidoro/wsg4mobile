@@ -59,7 +59,7 @@ public class Principal extends AppCompatActivity implements Runnable {
                     if (corridas.size() == 0)
                         alertValidacao("Esse corredor não está cadastrado em nenhuma corrida");
                     else
-                        redirecionaParaListaCorridas(numero);
+                        redirecionaParaListaCorridas();
                 }
             });
         } catch (Exception e){
@@ -75,12 +75,7 @@ public class Principal extends AppCompatActivity implements Runnable {
         }
     }
 
-    private void redirecionaParaListaCorridas(String numero) {
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("numero", numero);
-        editor.commit();
-
+    private void redirecionaParaListaCorridas() {
         Intent intent = new Intent(Principal.this, MainActivity.class);
         Bundle envelope = new Bundle();
         envelope.putSerializable("corridas", corridas);
