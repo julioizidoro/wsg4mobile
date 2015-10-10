@@ -23,6 +23,8 @@ import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
+
 
 public class WeatherActivityFragment extends android.support.v4.app.Fragment {
 
@@ -73,11 +75,15 @@ public class WeatherActivityFragment extends android.support.v4.app.Fragment {
             Weather weather = new Weather();
             WeatherHttpClient client = new WeatherHttpClient();
 
-            String data = client.getWeatherData(location);
             try {
-                weather = JSONWeatherParser.getWeather(data);
-                weather.iconData = client.getImage(weather.currentCondition.getIcon());
-            } catch (JSONException e) {
+                String data = client.getWeatherData(location);
+                try {
+                    weather = JSONWeatherParser.getWeather(data);
+                    weather.iconData = client.getImage(weather.currentCondition.getIcon());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             return weather;

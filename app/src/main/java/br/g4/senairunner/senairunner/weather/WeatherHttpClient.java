@@ -2,6 +2,7 @@ package br.g4.senairunner.senairunner.weather;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -10,42 +11,44 @@ import java.net.URL;
 public class WeatherHttpClient {
     private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
     private static String IMG_URL = "http://openweathermap.org/img/w/";
+    private static String API_KEY = "f666ea2d0f16f5c9bc92965a5cce9789";
 
-    public String getWeatherData(String location) {
+    public String getWeatherData(String location) throws IOException {
         HttpURLConnection con = null ;
         InputStream is = null;
+        String weatherJSON = null;
 
         try {
-            con = (HttpURLConnection) ( new URL(BASE_URL + location + "&units=metric&lang=pt")).openConnection();
+            URL url = new URL(BASE_URL + location + "&units=metric&lang=pt&APPID=" + API_KEY);
+            con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.setDoInput(true);
             con.setDoOutput(true);
             con.connect();
 
-            StringBuffer buffer = new StringBuffer();
             is = con.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String line;
+            StringBuilder buffer = new StringBuilder();
             while ((line = br.readLine()) != null ) {
                 buffer.append(line);
                 buffer.append("\r\n");
             }
-
-            is.close();
-            con.disconnect();
-            return buffer.toString();
+            weatherJSON = buffer.toString();
         }
         catch(Throwable t) {
             t.printStackTrace();
         }
         finally {
-            try { is.close(); } catch(Throwable t) {}
-            try { con.disconnect(); } catch(Throwable t) {}
+            if (is != null)
+                is.close();
+            if (con != null)
+                con.disconnect();
         }
-        return null;
+        return weatherJSON;
     }
 
-    public byte[] getImage(String code) {
+    public byte[] getImage(String code) throws IOException {
         HttpURLConnection con = null ;
         InputStream is = null;
         byte[] image = null;
@@ -64,14 +67,15 @@ public class WeatherHttpClient {
                 baos.write(buffer);
 
             image = baos.toByteArray();
-            return image;
         }
         catch(Throwable t) {
             t.printStackTrace();
         }
         finally {
-            try { is.close(); } catch(Throwable t) {}
-            try { con.disconnect(); } catch(Throwable t) {}
+            if (is != null)
+                is.close();
+            if (con != null)
+                con.disconnect();
         }
         return image;
     }
