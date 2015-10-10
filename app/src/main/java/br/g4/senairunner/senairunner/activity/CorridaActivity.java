@@ -29,18 +29,15 @@ public class CorridaActivity extends AppCompatActivity {
         txCorrida.setText(corrida.getNomeCorrida());
 
         TextView txData = (TextView) findViewById(R.id.txData);
-        txData.setText(new SimpleDateFormat("dd/MM/yyyy").format(corrida.getDataCorrida()));
+        txData.setText(new SimpleDateFormat("(dd/MM/yyyy)").format(corrida.getDataCorrida()));
 
         TextView txCidade = (TextView) findViewById(R.id.txCidade);
-        txCidade.setText(corrida.getCidade());
-
-        TextView txEstado = (TextView) findViewById(R.id.txEstado);
-        txEstado.setText(corrida.getEstado());
+        txCidade.setText(corrida.getCidade()+"/"+corrida.getEstado());
 
         TextView txStatus = (TextView) findViewById(R.id.txStatus);
         txStatus.setText(corrida.getStatusCorrida());
 
         TextView txValorInscricao = (TextView) findViewById(R.id.txValor);
-        txValorInscricao.setText(String.format("%.2f", corrida.getValorInscricao()));
+        txValorInscricao.setText(String.format("R$ %.2f", corrida.getValorInscricao()));
     }
 }

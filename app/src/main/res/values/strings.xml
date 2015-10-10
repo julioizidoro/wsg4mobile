@@ -3,16 +3,16 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title">Senai Runner G4</string>
-    <string name="title_lista_corrida">Lista de Corridas</string>
-    <string name="tx_corrida">"Corrida :"</string>
-    <string name="tx_data">"Data :"</string>
-    <string name="tx_cidade">"Cidade :"</string>
-    <string name="tx_estado">"Estado :"</string>
-    <string name="tx_valor">"Valor da Inscrição :"</string>
-    <string name="tx_status">"Status :"</string>
+    <string name="title_lista_corrida">Lista de corridas</string>
+    <string name="tx_corrida">"Descrição: "</string>
+    <string name="tx_data">"Data: "</string>
+    <string name="tx_cidade">"Cidade: "</string>
+    <string name="tx_estado">"Estado: "</string>
+    <string name="tx_valor">"Valor da inscrição: "</string>
+    <string name="tx_status">"Status: "</string>
     <string name="title_activity_principal">Senai Runner G4</string>
 
-    <string name="humidity">Humidade</string>
-    <string name="pressure">Pressão</string>
-    <string name="wind">Vento</string>
+    <string name="humidity">Umidade:</string>
+    <string name="pressure">Pressão:</string>
+    <string name="wind">Vento:</string>
 </resources>
